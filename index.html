@@ -1,0 +1,175 @@
+<!-- Name: Anay Abhijit Joshi -->
+<!-- Project 6: AI ChatBot using GCP (Google Cloud Platform) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Inquiry Chatbot</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #1d1160;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #FF00BF;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Form styles */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #1d1160;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #FF00BF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0000CD;
+        }
+
+        /* Chatbox styles */
+        #chatbox {
+            margin-top: 20px;
+        }
+
+        .info {
+            background: #FFFF00;
+            border-left: 4px solid #28a745;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        a.chat-link {
+            display: inline-block;
+            padding: 10px 15px;
+            font-weight: bold;
+            background-color: #FF00BF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        a.chat-link:hover {
+            background-color: #0000CD;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>College Inquiry Chatbot</h1>
+
+    <!-- Container for the chatbot -->
+    <div class="container">
+        <!-- Form to collect user details -->
+        <form id="userForm">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter your First Name" required>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter your Last Name" required>
+
+            <label for="email">E-Mail ID:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your E-Mail Address" required>
+
+            <button type="submit">Start Chat</button>
+        </form>
+
+        <!-- Chatbox display -->
+        <div id="chatbox" class="hidden">
+            <div class="info" id="userDetails"></div>
+            <!-- <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/e8d532c2-b491-49f7-8644-edabf95c251e"></iframe> -->
+            <a href="https://bot.dialogflow.com/e8d532c2-b491-49f7-8644-edabf95c251e" target="_blank" rel="noopener noreferrer" class="chat-link">
+                Click Here to connect with the ChatBot
+            </a>
+            <br>
+            <br>
+            <!-- Developer/Creator Information -->
+            <p><strong>GCP ChatBot Creator:</strong> Anay Abhijit Joshi (joshi2an@mail.uc.edu)</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 College Inquiry Chatbot | All Rights Reserved
+    </footer>
+
+    <script>
+        // Form handling
+        const form = document.getElementById('userForm');
+        const chatbox = document.getElementById('chatbox');
+        const userDetails = document.getElementById('userDetails');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+            const email = document.getElementById('email').value;
+
+            // Display user information in the chatbox
+            userDetails.innerHTML = `
+                <h3><strong>Welcome, ${fname} ${lname}!</strong></h3>
+                <p>Email: ${email}</p>
+            `;
+
+            // Show the chatbox and hide the form
+            chatbox.classList.remove('hidden');
+            form.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
